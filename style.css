@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root{
+    --blue1:#A9DCFD;
+    --blue2:#6396C5;
+    --text1:#373737;
+    --rodColor:#6396C5;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.container{
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+.calculator{
+    width: 423px;
+    height: 858px;
+    border-radius: 40px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.calculator--screen{
+    width: 100%;
+    height: 40%;
+}
+.calculator--screen__top{
+    height: 45px;
+    position: relative;
+    top: 52px;
+}
+.toggleButon{
+    position: relative;
+    width: 122px;
+    height: 100%;
+    left: 150px;
+    background: var(--blue1);
+    border-radius: 40px;
+    cursor:pointer;
+    transition: all 0.5s;
+}
+.sun{
+    position: absolute;
+    left: 0;
+    width: 68px;
+    height: 100%;
+    background: #D8EEFF;
+    border-radius: 40px;
+    text-align: center;
+    padding-top: 10px ;
+}
+.moon{
+    color: rgba(55, 55, 55, 0.4);
+    right: 0;
+    position: absolute;
+    width: 68px;
+    height: 100%;
+    border-radius: 40px;
+    text-align: center;
+    padding-top: 10px ;
+}
+
+
+/* dark mode a geçince toggleButon  */
+.toggleButon.active{
+    background: #1B6A9C;
+}
+.toggleButon.active .sun{
+    color: rgba(251, 251, 251, 0.4);
+    background-color: transparent;
+}
+.toggleButon.active .moon{
+    position: absolute;
+    right: 0;
+    width: 68px;
+    height: 100%;
+    background: #003661;
+    color: white;
+    border-radius: 40px;
+    text-align: center;
+    padding-top: 10px ;
+}
+/* -------------------------------- */
+
+/* dark moda geçince calculator renkleri değişir */
+.calculator.dark{
+    background: linear-gradient(166.34deg, #373737 0%, #252628 22.9%, #000309 100%);
+}
+.calculator.dark .historyButon,
+.calculator.dark .equal-icon,
+.calculator.dark #calculator-input
+{
+    color: white;
+}
+.calculator.dark .calculator--keys{
+    background: linear-gradient( #112C43 8.14%, #164766 27.9%, #164766 56.94%, #164766 84.11%);
+}
+.calculator.dark button{
+    background: #11314A;
+    color: white;
+    
+}
+/* --------------------------------------------- */
+
+
+
+.historyButon{
+    position: absolute;
+    right: 0;
+    top: 10px;
+    width: 30px;
+    height: 100%;
+}
+
+.calculator--screen__bottom{
+    height: 100px;
+    margin-top: 190px;
+}
+.history{
+    display: flex;
+    justify-content: flex-end;
+}
+#history-text{
+    width: 100%;
+    text-align: right;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 33px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: rgba(55, 55, 55, 0.5);
+}
+.calculations{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.equal-icon{
+    text-align: center;
+    width: 20%;
+    font-size: 20px;
+    font-weight: 900;
+    margin: 0.5rem 0.5rem 0.5rem 1.5rem;
+    padding: 0.5rem 0.5rem;
+
+}
+#calculator-input{
+    outline: none;
+    border: none;
+    width: 80%;
+    height: 40px;
+    text-align: right;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 60px;
+    background-color: transparent;
+    color: var(--text1);
+}
+
+
+.calculator--keys{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    height: 60%;
+    width: 100%;
+    background: linear-gradient(139deg, rgba(255,255,255,1) 0%, rgba(176,212,249,1) 66%, rgba(135,209,254,1) 97%);
+    border-radius: 40px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+button{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    font-weight: 900;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+    margin-right: 15px;
+}
+/* Fonksiyon tuşları */
+.calculator--keys__function{
+    position: relative;
+    width: auto;
+    height: 70px;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Numara tuşları */
+.calculator--keys__numbers{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    position: relative;
+    height: 70%;
+    width: auto;
+    align-content: center;
+}
+
+/* Operator tuşları */
+.right{
+    width: 20%;
+    height: auto;
+    margin-right: 15px;
+
+}
+.calculator--keys__operations{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 40px;
+}
+.equal{
+    background-color: white;
+}
+.rod{
+position: absolute;
+width: 175px;
+height: 5px;
+left: 124px;
+top: 483px;
+background: var(--rodColor);
+border-radius: 25px;
+}
