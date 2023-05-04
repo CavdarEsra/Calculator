@@ -16,9 +16,8 @@ let waitingForSecondValue=false;
 updateDisplay();
 //inputu güncelliyor
 function updateDisplay(){
-    historyText.value=displayValue;
+    historyText.value += displayValue;
     display.value=displayValue;  //input içindeki değeri displayValue değişkenine atadık
-    console.log(displayValue); 
 }
 
 keys.addEventListener('click', function(e){  //tuşlara tıklama
@@ -102,8 +101,6 @@ function inputNumber(num){
     }else{
         displayValue=displayValue === '0' ? num : displayValue + num ;
     }
-    console.log(displayValue,firstValue, operator, waitingForSecondValue);
-
     //inputta 0 yazıyorsa henüz değer girilmemiştir, num değerini aktarırız. 0 değilse de inputun sonuna yeni tıkanan aktarılır
 }
 function inputDecimal(){
