@@ -77,7 +77,11 @@ function inputDecimal() {
 function clear() {
   displayValue = "0";
   basicHistory="";
+  firstValue = null;
+  operator = null;
+  waitingForSecondValue = false;
 }
+
 function toggleSign() {
   basicHistory= `-${basicHistory}`;
 }
