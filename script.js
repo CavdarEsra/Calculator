@@ -12,7 +12,6 @@ let waitingForSecondValue = false;
 
 let result = 0;
 
-//DRY
 const toggleButton = document.querySelector(".sunmon");
 const historyButton=document.querySelector(".historyButon");
 const historyCard=document.querySelector(".history-card");
@@ -40,6 +39,8 @@ function operatorSelection(nextOperator) {
   }
   waitingForSecondValue = true; //2.değer bekleniyor. yani operatöre tıklandıktan sonrası
   operator = nextOperator;
+  basicHistory += `${nextOperator}`;
+  historyText.textContent += displayValue;
 }
 
 //!--------------------------------------
@@ -50,19 +51,21 @@ const calculateBySign = {
   "/": (x, y) => x / y,
 };
 function calculate(first, second, operator) {
-  calculateBySign[operator](first, second); //key,value
-  return second;
+  result = calculateBySign[operator](first, second); //key,value
+  return result;
 }
 //!----------------------------------------
 
 function inputNumber(num) {
   if (waitingForSecondValue) {
     //2.değer bekleniyorsa tıklananı al displayvalue ata. sonra bekleme inputu boşalt
+    
     displayValue = num;
     waitingForSecondValue = false;
   } else {
     displayValue = displayValue === "0" ? num : displayValue + num;
   }
+  historyText.textContent = basicHistory + num;
   //inputta 0 yazıyorsa henüz değer girilmemiştir, num değerini aktarırız. 0 değilse de inputun sonuna yeni tıkanan aktarılır
 }
 //!--------------------------------------
@@ -73,13 +76,16 @@ function inputDecimal() {
 }
 function clear() {
   displayValue = "0";
+  basicHistory="";
 }
 function toggleSign() {
-  displayValue = displayValue.charAt(0) === "-" ? displayValue.slice(1) : `-${displayValue}`;
+  basicHistory= `-${basicHistory}`;
 }
 function calculatePercentage() {
   const value = parseFloat(displayValue);
   displayValue = `${value * 0.01}`;
+  basicHistory= `${basicHistory}%`;
+
 }
 //!--------------------------------------
 
