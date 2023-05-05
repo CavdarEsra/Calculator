@@ -6,7 +6,6 @@
     --text1:#373737;
     --rodColor:#6396C5;
 }
-
 *{
     margin: 0;
     padding: 0;
@@ -37,7 +36,7 @@
     position: relative;
     top: 52px;
 }
-.toggleButon{
+.sunmon {
     position: relative;
     width: 122px;
     height: 100%;
@@ -69,15 +68,15 @@
 }
 
 
-/* dark mode a geçince toggleButon  */
-.toggleButon.active{
+/* dark mode a geçince sunmon  */
+.sunmon.active{
     background: #1B6A9C;
 }
-.toggleButon.active .sun{
+.sunmon.active .sun{
     color: rgba(251, 251, 251, 0.4);
     background-color: transparent;
 }
-.toggleButon.active .moon{
+.sunmon.active .moon{
     position: absolute;
     right: 0;
     width: 68px;
@@ -249,4 +248,20 @@ left: 124px;
 top: 483px;
 background: var(--rodColor);
 border-radius: 25px;
+}
+.history-card{
+    width: 25rem;
+    height: 20rem;
+    background-color: var(--blue1);
+    color: black;
+    position: absolute;
+    border-radius: 2rem;
+    padding: 2rem;
+    font-size: 1.5rem;
+    top: 10rem;
+    right: 10rem;
+    display: none;
+}
+.history-card.visible{
+    display: block;
 }

@@ -13,7 +13,9 @@ let waitingForSecondValue = false;
 let result = 0;
 
 //DRY
-const toggleButton = document.querySelector(".toggleButon");
+const toggleButton = document.querySelector(".sunmon");
+const historyButton=document.querySelector(".historyButon");
+const historyCard=document.querySelector(".history-card");
 const calculatorContainer = document.querySelector(".calculator");
 
 function updateDisplay() {
@@ -85,6 +87,9 @@ updateDisplay();
 toggleButton.addEventListener("click", function () {
   toggleButton.classList.toggle("active");
   calculatorContainer.classList.toggle("dark");
+});
+historyButton.addEventListener("click", function () {
+  historyCard.classList.toggle("visible");
 });
 
 keys.addEventListener("click", function (e) {  //butonlara tıklama
