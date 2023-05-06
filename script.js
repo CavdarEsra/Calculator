@@ -36,12 +36,14 @@ function operatorSelection(nextOperator) {
     const result = calculate(firstValue, value, operator);
     displayValue = `${parseFloat(result.toFixed(7))}`; //sonucu 7 basamakla sınırladık
     firstValue = result; //sonuç ilk değer olarak saklanır devam etmeyi göz önünde bulundurarak
+    basicHistory += `${displayValue} ${nextOperator}`; // İşlem geçmişine sonuç ve operatörü ekle
+  } else {
+    basicHistory += `${displayValue} ${nextOperator}`; // İlk operatör seçildiğinde işlem geçmişine değeri ve operatörü ekle
   }
   waitingForSecondValue = true; //2.değer bekleniyor. yani operatöre tıklandıktan sonrası
   operator = nextOperator;
-  basicHistory += `${nextOperator}`;
-  historyText.textContent += displayValue;
-}
+  updateDisplay();
+  }
 
 //!--------------------------------------
 const calculateBySign = {
@@ -65,7 +67,7 @@ function inputNumber(num) {
   } else {
     displayValue = displayValue === "0" ? num : displayValue + num;
   }
-  historyText.textContent = basicHistory + num;
+  updateDisplay();
   //inputta 0 yazıyorsa henüz değer girilmemiştir, num değerini aktarırız. 0 değilse de inputun sonuna yeni tıkanan aktarılır
 }
 //!--------------------------------------
@@ -160,8 +162,16 @@ document.addEventListener("keydown", function (event) {
 
 document.querySelector(".equal").addEventListener("click", function () {
   if (basicHistory.includes("=")) basicHistory = basicHistory.slice(1);
-  historyText.value = basicHistory;
+  const historyItem = document.createElement("history-card");
+  historyItem.classList.add("history-item");
+  historyItem.textContent = basicHistory;
+  historyCard.appendChild(historyItem);
+
+  const historyItems = historyCard.querySelectorAll(".history-item");
+  if (calculationHistory.length > 3) {
+    historyCard.removeChild(historyItems[0]); // İlk öğeyi kaldır
+  }
   calculationHistory.push(basicHistory);
   console.log(calculationHistory);
-  basicHistory = "";
+  basicHistory = `${displayValue} = `;
 });
