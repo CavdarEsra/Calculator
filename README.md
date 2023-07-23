@@ -1,7 +1,7 @@
 # Calculator
 ## Used Technologies 
 * HTML
-* SCSS 
+* CSS 
 * JAVASCRIPT
 ### Screenshot Of Website 
 ![Ekran resmi1](https://github.com/CavdarEsra/Calculator/blob/main/Calc1.png)
